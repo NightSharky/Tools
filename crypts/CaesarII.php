@@ -1,6 +1,8 @@
 <?php
 
-	header('Content-Type: text/html; charset=utf-8');
+	header('Content-Type: text/plain; charset=utf-8');
+
+	echo "Klíč:\t\t" . $_GET['key']. "\nOperace:\t" . ($_GET['mode'] == "crypt" ? "crypt" : "decrypt")  . "\nZadaný text:\t" . $_GET['str'] . "\nPřeklad:\t";
 
 	if($_GET['mode'] == "crypt")
 	{
