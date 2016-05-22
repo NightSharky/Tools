@@ -1,7 +1,7 @@
 <?php
 
 	header('Content-Type: text/html; charset=utf-8');
-	
+
 	if($_GET['mode'] == "crypt")
 	{
 		$crypts = new CaesarII($_GET['key']);
@@ -42,10 +42,17 @@
 
 		public function crypt($str)
 		{
-			$str = str_split($str, 1);
+			$str = str_split(strtolower($str), 1);
+
+			$keycount = count($this->alpha);
+
+			$keynum = 0;
+
 			foreach ($str as $p => $c) 
 			{
-				$str[$p] = $this->alpha[ $p%strlen($this->key) ][ strpos(self::ALPHABET, $c) ];
+				if($c == " " || $c == "," || $c == ".") continue;
+				$str[$p] = $this->alpha[ $keynum%strlen($this->key) ][ strpos(self::ALPHABET, $c) ];
+				$keynum++;
 			}
 			return implode($str);
 		}
