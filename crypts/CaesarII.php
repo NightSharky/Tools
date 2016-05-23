@@ -39,7 +39,7 @@
 
 		private function simplekey($k)
 		{
-			return str_split(substr(self::ALPHABET . self::ALPHABET, strpos(self::ALPHABET, $k), 26),1);
+			return str_split(substr(self::ALPHABET . self::ALPHABET, strpos(self::ALPHABET, $k), strlen(self::ALPHABET)),1);
 		}
 
 		public function crypt($str)
